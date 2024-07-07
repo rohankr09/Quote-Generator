@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" type="x-icon" href="icon_web.png">
+    <link rel="shortcut icon" type="x-icon" href="assets/icon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Random Quote</title>
     <link rel="stylesheet" href="style.css">
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
+    
     <header>
         <h1>🙶 Random Quote Generator 🙷</h1>
     </header>
@@ -18,45 +19,17 @@
         <blockquote id="quote">Loading...</blockquote>
         <span id="author">Loading...</span>
         <div>
-            <button onclick="getquoteFromApi1(api1_url)">New Quote</button>
-            <button onclick="tweet()"><img src="twitter0.png"></button>
-            <button onclick="whatsapp()"><img src="whatsapp.png"></button>
+            <button onclick="getQuoteFromApiNinjas('inspirational')">New Quote</button>
+            <button onclick="tweet()"><img src="assets/twitter.png"></button>
+            <button onclick="whatsapp()"><img src="assets/whatsapp.png"></button>
         </div>
-    </div>
-    
-    <script>
-        const quote = document.getElementById("quote");
-        const author = document.getElementById("author");
-        const api1_url = "https://api.quotable.io/quotes/random";
-    
-        async function getquote(url) {
-            const response = await fetch(url);
-            var data = await response.json();
-            quote.innerHTML = data.content;
-            author.innerHTML = data.author;
-        }
-        getquoteFromApi1(api1_url);
-
-        function tweet(){
-            window.open("https://twitter.com/intent/tweet?text=" + quote.innerHTML + "---- by " + author.innerHTML, "Tweet Window", "width=600, height=300");
-        }
-
-        function whatsapp(){
-            
-            const quoteText = quote.innerHTML;
-            const authorText = author.innerHTML;
-
-            const encodedMessage = encodeURIComponent(quoteText + ' -- by ' + authorText);
-            const whatsappUrl = 'https://api.whatsapp.com/send?text=' + encodedMessage;
-
-            window.open(whatsappUrl, 'Whatsapp window', 'width=600,height=300');
-        }
-
-    </script>
+    </div>    
 
     <footer>
         <p>Copyright © 2024 <a href="https://www.linkedin.com/in/rohankumar04/" class="linkedin-link">Rohan Kumar</a></p>
     </footer>
+
+    <script src="script.js"></script>
 
 </body>
 </html>
